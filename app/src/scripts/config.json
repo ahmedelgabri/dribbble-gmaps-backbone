@@ -1,0 +1,7 @@
+{
+  "dribbble": {
+    "url": "https://api.dribbble.com/v1/",
+    "access_token": "7e7eaa80824b2c13b545206b88fe3fc42759285f93a91ca0ccb3ff53939e4697"
+  },
+  "gmaps": {}
+}
