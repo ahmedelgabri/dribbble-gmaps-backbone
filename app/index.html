@@ -8,9 +8,13 @@
 <body>
 
   <header>
-    <h1><span>Dribbber</span> Designers</h1>
+    <h1><a href="/"><span>Dribbber</span> Designers</a></h1>
   </header>
   <main class="container">
+    <form class="search" action="/search" method="post">
+      <input type="search" placeholder="Search for Designers...">
+      <button type="submit"><img src="dist/images/search.png" width="13"></button>
+    </form>
     <div class="app"></div>
     <footer>
       <small>This is footer</small>
@@ -18,17 +22,103 @@
   </main>
 
   <script type="text/template" id="shot-popup">
+    <div class="info-popup">
+      <div class="info-popup__shot">
+        <div>
+          <a href="#/shot/<%- shot.id %>"><img src="<%- shot.images.teaser %>"></a>
+          <div class="h-cf">
+            <% if (shot.attachments_count > 0) {%>
+              <img src="dist/images/attachment.png" width="12" alt="">
+            <% }; %>
+            <ul class="shot__stats horz-list">
+              <li class="horz-list__item"><img src="dist/images/views.png" alt=""> <%- shot.views_count %></li>
+              <li class="horz-list__item"><img src="dist/images/comments.png" alt=""><%- shot.comments_count %></li>
+              <li class="horz-list__item"><img src="dist/images/likes.png" alt=""><%- shot.likes_count %></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="media">
+        <a href="#/user/<%- shot.user.id %>">
+          <img class="media__figure info-popup__avatar" src="<%- shot.user.avatar_url %>" alt="">
+          <div class="media__body info-popup__user">
+            <h3><%- shot.user.name %></h3>
+            <p><%- shot.user.location %></p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </script>
+
+  <script type="text/template" id="shot-view">
+    <div class="media user">
+      <img class="media__figure user__avatar" src="<%- shot.user.avatar_url %>">
+      <div class="media__body user__info">
+        <h2 class="user__name"><a href="#/user/<%- shot.user.id %>"><%- shot.user.name  %> <% if (shot.user.pro) {%><span class="user__badge">Pro</span><% }; %></a></h2>
+        <ul class="horz-list user__social">
+          <li class="horz-list__item"> <img src="dist/images/location.png" alt=""> <%- shot.user.location %></li>
+          <li class="horz-list__item"> <img src="dist/images/url.png" alt=""> <a target="_blank" href="<%- shot.user.links.web %>"><%- shot.user.links.web %></a></li>
+          <% if (shot.user.links.twitter) {%>
+          <li class="horz-list__item"> <img src="dist/images/twitter.png" alt=""> <a target="_blank" href="<%- shot.user.links.twitter %>"><%- shot.user.links.twitter %></a></li>
+          <% }; %>
+        </ul>
+      </div>
+    </div>
+
+    <div class="shot">
+      <div class="shot__info">
+        <h3 class="shot__title"><%- shot.title %></h3>
+
+        <ul class="shot__stats horz-list">
+          <li class="horz-list__item"><img src="dist/images/views.png" alt=""> <%- shot.views_count %></li>
+          <li class="horz-list__item"><img src="dist/images/comments.png" alt=""><%- shot.comments_count %></li>
+          <li class="horz-list__item"><img src="dist/images/likes.png" alt=""><%- shot.likes_count %></li>
+        </ul>
+      </div>
+
+      <img class="shot__photo" src="<%- shot.images.hidpi %>" alt="">
+
+    </div>
 
   </script>
 
-  <script type="text/template" id="shot-page">
-
+  <script type="text/template" id="user-info">
+    <div class="media user">
+      <img class="media__figure user__avatar" src="<%- user.avatar_url %>">
+      <div class="media__body user__info">
+        <h2 class="user__name"><%- user.name  %> <% if (user.pro) {%><span class="user__badge">Pro</span><% }; %></h2>
+        <ul class="horz-list user__social">
+          <li class="horz-list__item"> <img src="dist/images/location.png" alt=""> <%- user.location %></li>
+          <li class="horz-list__item"> <img src="dist/images/url.png" alt=""> <a target="_blank" href="<%- user.links.web %>"><%- user.links.web %></a></li>
+          <% if (user.links.twitter) {%>
+          <li class="horz-list__item"> <img src="dist/images/twitter.png" alt=""> <a target="_blank" href="<%- user.links.twitter %>"><%- user.links.twitter %></a></li>
+          <% }; %>
+        </ul>
+      </div>
+    </div>
+    <div class="details-wrapper">
+      <h3>Shots</h3>
+      <ul class="shots-grid">
+      <% _.each(shots, function(shot){ %>
+        <li class="shots-grid__item">
+          <a class="shots-grid__link" href="#/shot/<%- shot.id %>">
+            <img src="<%- shot.images.teaser %>" alt="">
+          </a>
+          <% if (shot.attachments_count > 0) {%>
+            <img src="dist/images/attachment.png" width="12" alt="">
+          <% }; %>
+          <ul class="shot__stats horz-list">
+            <li class="horz-list__item"><img src="dist/images/views.png" alt=""> <%- shot.views_count %></li>
+            <li class="horz-list__item"><img src="dist/images/comments.png" alt=""><%- shot.comments_count %></li>
+            <li class="horz-list__item"><img src="dist/images/likes.png" alt=""><%- shot.likes_count %></li>
+          </ul>
+        </li>
+      <% }); %>
+      </ul>
+    </div>
   </script>
 
-  <script type="text/template" id="user-page">
-
-  </script>
-
+  <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
   <script src="dist/scripts/app.min.js"></script>
 </body>
 </html>

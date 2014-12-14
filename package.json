@@ -1,5 +1,5 @@
 {
-  "name": "jrd-app",
+  "name": "some-app",
   "version": "1.0.0",
   "description": "Backbone app using dribbble & Google maps APIs",
   "main": "index.js",
@@ -10,7 +10,6 @@
   "license": "MIT",
   "dependencies": {
     "backbone": "^1.1.2",
-    "geocoder": "^0.2.2",
     "google-maps": "^2.1.1",
     "jquery": "^2.1.1",
     "lodash": "^2.4.1"
@@ -18,6 +17,7 @@
   "devDependencies": {
     "browser-sync": "^1.7.2",
     "browserify": "^7.0.0",
+    "browserify-shim": "^3.8.1",
     "gulp": "^3.8.10",
     "gulp-autoprefixer": "^2.0.0",
     "gulp-csso": "^0.2.9",
@@ -28,7 +28,16 @@
     "gulp-uglify": "^1.0.2",
     "gulp-util": "^3.0.1",
     "jshint-stylish": "^1.0.0",
+    "node-geocoder": "^2.12.0",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.0.0"
+  },
+  "browserify": {
+    "transform": [
+      "browserify-shim"
+    ]
+  },
+  "browserify-shim": {
+    "google": "global:google"
   }
 }

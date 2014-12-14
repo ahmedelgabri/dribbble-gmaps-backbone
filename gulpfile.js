@@ -41,15 +41,16 @@ gulp.task('jshint', function() {
 gulp.task('browserify', ['jshint'], function() {
   var bundler = browserify({
     entries: ['./app/src/scripts/app.js'],
-    debug: true
+    debug: false
   });
 
   var bundle = function() {
       return bundler
         .bundle()
         .pipe(source('app.min.js'))
+        .pipe(plumber())
         .pipe(buffer())
-        // .pipe(uglify())
+        .pipe(uglify())
         .pipe(gulp.dest('./app/dist/scripts'));
     };
 

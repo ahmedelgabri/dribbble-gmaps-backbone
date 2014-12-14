@@ -1,3 +1,7 @@
+////////////////////////////////////////////////////////////////////////////////
+// BASE STYLES
+////////////////////////////////////////////////////////////////////////////////
+
 *,
 *:after,
 *:before
@@ -12,22 +16,68 @@ html
 
 body
   margin: 0
-  font-family: helvetica, sans-serif
+  font-family: helvetica neue, sans-serif
   background-color: #EDEEF2
   color: #A4ABB2
+
+p
+  margin: 0 0 1.5em
+
+h1, h2, h3, h4
+  margin: 0 0 .5em
+
+  &, > a
+    color: #44434A
+
+a
+  color: #A4ABB2
+  text-decoration: none
+  transition: color .2s linear
+
+  &:hover
+    color: #ED008C
+
+
+input
+  border: 0
+  padding: .5em
+  font-size: 100%
+  font-family: inherit
+  color: #bbb
+
+
+button
+  background-color: #5494EF
+  color: #fff
+  border: none
+  font-size: 100%
+  padding: .5em 1em
+  cursor: pointer
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////
+// MAIN ELEMENTS
+////////////////////////////////////////////////////////////////////////////////
 
 header
   background-color: #3073D2
   color: #fff
   text-align: center
   padding: 1em
+  margin-bottom: 2em
 
   > h1
-    margin: 0
     font-weight: 100
     font-size: 1.5em
+    color: #fff
+    margin: 0
 
-    > span
+    a, a:hover
+      color: #fff
+
+    span
       font-family: georgia, serif
       font-weight: bold
 
@@ -36,12 +86,170 @@ main
   max-width: 51.5625em
   margin: 0 auto
 
+footer
+  padding: 1em
+
 
 .app
-  margin-top: 2em
+  > div
+    min-height: 50em
+    border: 2px solid #D7D7D7
+
+.main-wrapper
+  padding: 2em
+  background-color: #fff
+
+
+.search
+  overflow: hidden
+  max-width: 20em
+  margin: 0 auto 2em
+  border-radius: 3px
+
+  > input
+    width: 77%
+    -webkit-appearance: none
+    float: left
+
+
+////////////////////////////////////////////////////////////////////////////////
+// LAYOUT COMPONENETS
+////////////////////////////////////////////////////////////////////////////////
+
+.media
+  &:after
+    content: ""
+    display: table
+    clear: both
+
+.media__figure
+  float: left
+  margin-right: 1em
+
+  > img
+    display: block
+
+.media__body
+  display: table-cell
+  width: 10000px
+
+
+
+.horz-list
+  padding: 0
+  margin: 0
+  list-style: none
+  overflow: hidden
+
+.horz-list__item
+  float: left
+  margin-right: .5em
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////
+// DESIGN PATTERNS
+////////////////////////////////////////////////////////////////////////////////
+
+.user
   margin-bottom: 2em
-  height: 0
-  padding-top: 100%
-  border: 2px solid #D7D7D7
+
+.user__avatar
+  border-radius: 4px
+
+.user__badge
+  font-size: 60%
+  color: #fff
+  padding: .3em .4em .2em
+  background-color: #A4ABB2
+  line-height: 1
+  vertical-align: .25em
+  border-radius: 2px
+  text-transform: uppercase
+  margin-left: .5em
+
+.user__social
+  font-size: .8em
+
+  > li
+    margin-right: 1em
+
+    img
+      vertical-align: top
 
 
+
+.shot__info
+  overflow: hidden
+  margin-bottom: 2em
+
+.shot__title
+  float: left
+
+.shot__stats
+  float: right
+  font-size: .7em
+
+  > li
+    margin-left: .5em
+
+  img
+    vertical-align: -2px
+    margin-right: .2em
+
+
+.shot__photo
+  max-width: 100%
+
+
+.info-popup
+  max-width: 200px
+  ul
+    margin: 0 auto
+    padding: 0
+    list-style: none
+
+.info-popup__avatar
+  max-width: 70px
+  border-radius: 50%
+
+.info-popup__shot
+  margin-bottom: 1em
+  overflow: hidden
+
+.info-popup__user
+  h3
+    margin-bottom: 0
+  &:hover
+    > *
+      color: inherit
+
+
+
+.shots-grid
+  margin: 0 0 0 -4.5em
+  padding: 0
+  list-style: none
+  overflow: hidden
+
+.shots-grid__item
+  float: left
+  margin-left: 4.5em
+  margin-bottom: 2em
+
+.shots-grid__link
+  display: block
+  margin-bottom: .5em
+
+
+
+////////////////////////////////////////////////////////////////////////////////
+// HELPERS
+////////////////////////////////////////////////////////////////////////////////
+
+.h-cf
+  &:after
+    content: ""
+    display: table
+    clear: both
