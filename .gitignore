@@ -1,2 +1,3 @@
  app/dist/scripts
  app/dist/styles
+ node_modules/
